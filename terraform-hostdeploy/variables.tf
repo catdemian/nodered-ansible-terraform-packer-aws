@@ -23,15 +23,8 @@ variable "ami_packer" {
   default     = ""
 }
 
-variable "secret_key" {
-  description = "AWS secret_key"
-  default     = ""
-}
-
-variable "access_key" {
-  description = "AWS Access key"
-  default     = ""
-}
+variable "access_key" {}
+variable "secret_key" {}
 
 variable "region" {
   description = "AWS Region"

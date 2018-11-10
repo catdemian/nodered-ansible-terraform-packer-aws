@@ -18,15 +18,8 @@ variable "public_key_path" {
   default = "~/.ssh/id_rsa.pub"
 }
 
-variable "secret_key" {
-  description = "AWS secret_key"
-  default     = "Write your AWS Secret key here"
-}
-
-variable "access_key" {
-  description = "AWS Access key"
-  default     = "Write your AWS Access key here"
-}
+variable "access_key" {}
+variable "secret_key" {}
 
 variable "region" {
   description = "AWS Region"
