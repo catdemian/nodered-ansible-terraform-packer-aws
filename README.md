@@ -6,7 +6,7 @@ This repository is intended to deploy Node-Red on AWS, Sao Paulo Region. If you 
 -  variable "availability_zones" on ./terraform-net/variables.tf
 -  variable "region" on ./terraform-net/variables.tf
 -  "region" on ./packer/packer.json
--  "base_ami"  on ./packer/packer.json
+-  "base_ami"  on ./packer/packer.json  .Find a Ubuntu 18.04 base AMI 
 -  variable "availability_zones" on ./terraform-hostdeploy/variables.tf
 -  variable "region" on ./terraform-hostdeploy/variables.tf
 
@@ -44,7 +44,7 @@ From the execution on terraform-net get the value of the following output:
 
 1. Access terraform-net directory `cd ../packer/`
 
-2. Provide subnet_id  in the packer.json file with the value of "aws_subnet_output" just gathered before.  `vi vi packer.json`
+2. Provide subnet_id  in the packer.json file with the value of "aws_subnet_output" just gathered before.  `vi packer.json`
 
 3. Execute command `packer build packer.json`
 
