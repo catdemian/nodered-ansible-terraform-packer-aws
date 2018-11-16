@@ -4,9 +4,9 @@
     "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
     "region": "sa-east-1",
     "ssh_username": "ubuntu",
-    "base_ami": "ami-0f7c76bfc85e5b4ea",
+    "base_ami": "ami-092e6baec20e8d25d",
     "instance_type": "t2.micro",
-    "subnet_id": "write a value here from terraform-net output"
+    "subnet_id": "subnet-084de49cc276df9e7"
   },
   "builders": [
     {

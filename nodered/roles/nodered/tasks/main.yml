@@ -7,7 +7,7 @@
 
 - name: NodeJS PPA
   apt_repository:
-    repo: deb https://deb.nodesource.com/node_6.x xenial main
+    repo: deb https://deb.nodesource.com/node_8.x bionic main
     state: present
     filename: nodejs6
   become: yes
