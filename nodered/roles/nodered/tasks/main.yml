@@ -1,0 +1,49 @@
+---
+- name: NodeJS PPA key
+  apt_key:
+    url: "https://deb.nodesource.com/gpgkey/nodesource.gpg.key"
+    state: present
+  become: yes
+
+- name: NodeJS PPA
+  apt_repository:
+    repo: deb https://deb.nodesource.com/node_8.x bionic main
+    state: present
+    filename: nodejs6
+  become: yes
+
+## Create nodered linux user
+- user: 
+    name: nodered
+    state: present
+    system: no             
+    createhome: yes        
+    home: /home/nodered  
+
+- name: Install nodejs
+  apt: name=nodejs state=present
+  become: yes
+
+- name: Install Node-Red
+  command: npm install -g --unsafe-perm node-red
+  become: yes
+
+
+- name: Create Node-Red Service
+  template: src=nodered.service dest=/etc/systemd/system/nodered.service
+  become: yes
+
+- name: reload systemd unit configuration
+  command: systemctl daemon-reload
+  become: yes
+
+- name: Service NodeRed Enabled
+  command: systemctl enable nodered.service
+  become: yes
+
+
+- name: Run Node-Red
+  command: systemctl start nodered.service
+  become: yes
+  async: 45
+  poll: 0

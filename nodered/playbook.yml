@@ -1,0 +1,12 @@
+---
+
+- name: Install Node-Red
+  hosts: all
+  become: yes
+  gather_facts: no
+  pre_tasks:
+
+    - name: 'install python'
+      raw: sudo apt-get -y install python-simplejson
+  roles:
+    - nodered

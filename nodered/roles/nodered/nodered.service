@@ -1,0 +1,20 @@
+[Unit]
+Description=nodered service
+After=network.target
+
+
+[Service]
+ExecStart=/usr/bin/node-red
+Restart=on-failure
+KillSignal=SIGINT
+User=nodered
+Group=nodered
+
+StandardOutput=syslog               # Output to syslog
+StandardError=syslog                # Output to syslog
+SyslogIdentifier=nodered
+WorkingDirectory=/home/nodered
+PIDFile=/var/run/forever.pid
+
+[Install]
+WantedBy=multi-user.target

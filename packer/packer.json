@@ -1,0 +1,34 @@
+{
+  "variables": {
+    "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
+    "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
+    "region": "sa-east-1",
+    "ssh_username": "ubuntu",
+    "base_ami": "ami-092e6baec20e8d25d",
+    "instance_type": "t2.micro",
+    "subnet_id": "subnet-084de49cc276df9e7"
+  },
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key` }}",
+      "region": "{{user `region` }}",
+      "subnet_id": "{{user `subnet_id` }}",
+      "source_ami": "{{user `base_ami`}}",
+      "instance_type": "{{user `instance_type` }}",
+      "ssh_username": "{{user `ssh_username`}}",
+      "ami_name": "packer-base-{{timestamp}}",
+      "associate_public_ip_address": true,
+      "tags": {
+        "Name": "noded-red-packer"
+      }
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "ansible",
+      "playbook_file": "../nodered/playbook.yml"
+    }
+  ]
+}
